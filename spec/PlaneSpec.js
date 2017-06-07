@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Feature:', function(){
+describe('Plane', function(){
   var plane;
   var airport;
 
@@ -20,4 +20,3 @@ describe('Feature:', function(){
     expect(airport.clearForTakeOff).toHaveBeenCalled();
   });
 });
- 
