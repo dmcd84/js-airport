@@ -15,8 +15,9 @@ describe('Feature:', function(){
   });
 
   it('can take off from an airport', function(){
-    plane.land(airport)
+    plane.land(airport);
     plane.takeoff();
     expect(airport.clearForTakeOff).toHaveBeenCalled();
-  })
+  });
 });
+ 

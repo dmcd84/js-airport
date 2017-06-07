@@ -1,18 +1,24 @@
 'use strict';
 
-function Airport(){
-  this._hanger = [];
+function Airport(weather){
+  this._weather = typeof weather !== 'undefined' ? weather : new Weather();
+  this._hangar = [];
+}
+
+Airport.prototype.planes = function(){
+  return this._hangar;
 };
-Airport.prototype.planes = function(){ return this._hanger; };
+
 Airport.prototype.clearForLanding = function(plane) {
-  this._hanger.push(plane);
+  if(this._weather.isStormy()) {
+    throw new Error('cannot land during storm');
+  }
+  this._hangar.push(plane);
 };
+
 Airport.prototype.clearForTakeOff = function(plane) {
-  if(this.isStormy()){
+  if(this._weather.isStormy()) {
     throw new Error('cannot take off during storm');
-  };
-  this._hanger = [];
-};
-Airport.prototype.isStormy = function(){
-  return false;
+  }
+  this._hangar = [];
 };
